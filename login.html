@@ -257,20 +257,26 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
             }); 
-            console.log("login logic worked")
+            const data = await loginResponse.json();
+            if (loginResponse.ok) {
+                      sessionStorage.setItem("userData", JSON.stringify(data)); // Use sessionStorage instead
+                      window.location.href = 'dashboard.html';
+                  } else {
+                    alert('Please enter a valid email and password');
+                  }
             //funtion to send otp
-            if (loginResponse.ok) {  // Fix: Corrected variable name
-              const response = await fetch('https://investment-server-production.up.railway.app/send-otp', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email })
-            });
-            const data = await response.json();
-            console.log(data)
-            window.location.href = `otp-verification.html?email=${encodeURIComponent(email)}`;
-          } else {
-              alert('Please enter a valid email and password');
-          }
+          //   if (loginResponse.ok) {  // Fix: Corrected variable name
+          //     const response = await fetch('https://investment-server-production.up.railway.app/send-otp', {
+          //       method: 'POST',
+          //       headers: { 'Content-Type': 'application/json' },
+          //       body: JSON.stringify({ email })
+          //   });
+          //   const data = await response.json();
+          //   console.log(data)
+          //   window.location.href = `otp-verification.html?email=${encodeURIComponent(email)}`;
+          // } else {
+          //     alert('Please enter a valid email and password');
+          // }
           
           } catch (error) {
                 alert("Error verifying OTP: " + error.message);
