@@ -22,7 +22,8 @@
   }
   </script>
   <script type="text/javascript" src="../../translate.google.com/translate_a/elementa0d8.js?cb=googleTranslateElementInit"></script>
-
+   <!-- sweet alert  -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- remix icon font css  -->
   <link rel="stylesheet" href="assets/css/remixicon.css">
   <!-- BootStrap css -->
@@ -240,7 +241,7 @@
                   </div>
         
                   <div class="card-body">
-                    <form action="https://fintrustlimited.com/dashboard/complete.php" method="post">
+                    <form>
                       <div class="row mb-24 gy-3 align-items-center">
         
                         <input type="hidden" class="form-control" name="email" placeholder="Email" value="suleiman6444@gmail.com" required="">
@@ -252,7 +253,7 @@
                             <span class="icon">
                               <iconify-icon icon="ph:currency-circle-dollar"></iconify-icon>
                             </span>
-                            <input type="number" name="amount" placeholder="Amount" class="form-control" autocomplete="off" required>
+                            <input type="number" name="amount" placeholder="Amount" id="deposit" class="form-control" autocomplete="off" required>
                           </div>
                         </div>
                       </div>
@@ -267,7 +268,7 @@
                           </div>
                         </div>
                       </div>
-                      <button type="submit" name="deposit" class="btn rounded-pill btn-success-600 radius-8 px-20 py-11">Submit</button>
+                      <button type="submit" name="deposit" id="sweetalert" class="btn rounded-pill btn-success-600 radius-8 px-20 py-11">Submit</button>
                     </form>
         
                     <div class="d-flex flex-wrap align-items-center gap-3 mt-3">
@@ -355,6 +356,24 @@
 </main>
 
 <script>
+
+document.getElementById("sweetalert").addEventListener("click", function() {
+    const depositField = document.getElementById("deposit");
+    
+
+    if (depositField.value !== "") {  
+      event.preventDefault();
+        Swal.fire({
+            icon: "success",
+            title: "Success!",
+            text: "Awaiting confirmation",
+        });
+    }
+
+    depositField.value = ""; // Reset the input field
+});
+
+
   function loadUserData() {
       const userData = JSON.parse(sessionStorage.getItem("userData"));
 
