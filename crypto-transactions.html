@@ -179,10 +179,10 @@
           <div class="dropdown-menu to-top dropdown-menu-sm">
             <div class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
               <div>
-                                <h6 class="text-lg text-primary-light fw-semibold mb-2">bolo bolo</h6>
-                <span class="text-secondary-light fw-medium text-sm">suleiman6444@gmail.com</span>
-                <span class="text-secondary-light fw-medium text-sm">KYC Not Verified</span>
-              </div>
+                <h6 class="text-lg text-primary-light fw-semibold mb-2" ><span class="fullName">loading...</span></h6>
+<span class="text-secondary-light fw-medium text-sm" id="email"></span>
+<span class="text-secondary-light fw-medium text-sm">KYC <span class="text-secondary-light fw-medium text-sm" id="kyc"></span></span>
+</div>
               <button type="button" class="hover-text-danger">
                 <iconify-icon icon="radix-icons:cross-1" class="icon text-xl"></iconify-icon> 
               </button>
@@ -315,6 +315,30 @@
   </div>
 </footer>
 </main>
+
+<script>
+  function loadUserData() {
+      const userData = JSON.parse(sessionStorage.getItem("userData"));
+
+      // if (!userData) {
+      //   window.location.href = 'login.html';
+      // }
+
+      console.log("Loaded User Data:", userData); // Log the user data
+
+      // ✅ Update all elements with class "fullName"
+      document.querySelectorAll(".fullName").forEach(el => {
+          el.textContent = userData.full_name || "User";
+      });
+      document.getElementById("email").textContent = userData.email
+      document.getElementById("kyc").textContent = userData.kyc
+  }
+
+  // ✅ Load user data when the page loads
+  window.onload = loadUserData;
+</script>
+
+
   <!-- jQuery library js -->
   <script src="assets/js/lib/jquery-3.7.1.min.js"></script>
   <!-- Bootstrap js -->
