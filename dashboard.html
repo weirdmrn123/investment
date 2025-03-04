@@ -181,7 +181,7 @@
               <div>
                                 <h6 class="text-lg text-primary-light fw-semibold mb-2" ><span class="fullName">loading...</span></h6>
                 <span class="text-secondary-light fw-medium text-sm" id="email"></span>
-                <span class="text-secondary-light fw-medium text-sm">KYC <span class="text-secondary-light fw-medium text-sm" id="kyc"></span></span>
+                <span class="text-secondary-light fw-medium text-sm">KYC <span class="text-secondary-light fw-medium text-sm" id="Pkyc"></span></span>
               </div>
               <button type="button" class="hover-text-danger">
                 <iconify-icon icon="radix-icons:cross-1" class="icon text-xl"></iconify-icon> 
@@ -571,6 +571,7 @@
       });
       document.getElementById("email").textContent = userData.email
       document.getElementById("kyc").textContent = userData.kyc
+      document.getElementById("Pkyc").textContent = userData.kyc
       document.getElementById("balance").textContent = userData.withdrawable_balance
       document.getElementById("capital").textContent = userData.capital_invested
       document.getElementById("profit").textContent = userData.profit
